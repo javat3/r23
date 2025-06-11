@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
-    <title>CGPA Calculator</title>
+    <title>SGPA Calculator</title>
     <style>
         body 
         {
@@ -16,7 +16,7 @@
       </style>
 </head>
 <body>
-    <h1><center>R23 IOT I BTECH I SEMESTER CGPA CALCULATOR</center></h1>
+    <h1><center>R23 IOT I BTECH I SEMESTER SGPA CALCULATOR</center></h1>
     <center><table border="5"><tr><td>
         <table border="0" style="border-spacing: 0 20px;">
         <tr>
@@ -75,7 +75,7 @@
             <th><input type="number" style="width:85px;" id="t10"></th>
         </tr>
             <th><button onclick="ResultsBtech()" style="background-color: bisque;">Result </button></th>
-            <b><th colspan="2"><span style ="background-color: rgb(21, 255, 0);"id="result">CGPA</span>
+            <b><th colspan="2"><span style ="background-color: rgb(21, 255, 0);"id="result">SGPA</span>
                 <script>
                     function ResultsBtech()
                     {
@@ -174,7 +174,7 @@
                         }
                       else
                        {
-                         str_final=temp.toFixed(2)+" "+"CGPA";
+                         str_final=temp.toFixed(2)+" "+"SGPA";
                        }
                       document.getElementById("result").textContent = str_final;
                     }
