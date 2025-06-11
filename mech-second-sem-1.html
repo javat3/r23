@@ -151,6 +151,14 @@
                             alert("Invalid input  Credits must be 0–3 and Points must be 1–10.");
                             return;
                         }
+
+                      const s10 = parseFloat(document.getElementById("s10").value) ;
+                      const f10 = parseFloat(document.getElementById("t10").value) ;
+                         if(s10<0||s10>3||f10<1||f10>10)
+                        {
+                            alert("Invalid input  Credits must be 0–3 and Points must be 1–10.");
+                            return;
+                        }
                         if(isNaN(s1)||isNaN(s2)||isNaN(s3)||isNaN(s4)||isNaN(s5)||isNaN(s6)||isNaN(s7)||isNaN(s8)||isNaN(s9)||isNan(s10)||
                            isNaN(f1)||isNaN(f2)||isNaN(f3)||isNaN(f4)||isNaN(f5)||isNaN(f6)||isNaN(f7)||isNaN(f8)||isNaN(f9)||isNaN(f10))
                         {
