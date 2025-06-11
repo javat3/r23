@@ -75,32 +75,13 @@
                 <script>
                     function ResultCSE() 
                     {
-                      const s1=parseFloat(document.getElementById("s1").value) || 0;
-                      const f1 = parseFloat(document.getElementById("t1").value) || 0;
-
-                      const s2 = parseFloat(document.getElementById("s2").value) || 0;
-                      const f2 = parseFloat(document.getElementById("t2").value) || 0;
-
-                      const s3 = parseFloat(document.getElementById("s3").value) || 0;
-                      const f3= parseFloat(document.getElementById("t3").value) || 0;
-
-                      const s4 = parseFloat(document.getElementById("s4").value) || 0;
-                      const f4 = parseFloat(document.getElementById("t4").value) || 0;
-
-                      const s5 = parseFloat(document.getElementById("s5").value) || 0;
-                      const f5 = parseFloat(document.getElementById("t5").value) || 0;
-
-                      const s6 = parseFloat(document.getElementById("s6").value) || 0;
-                      const f6 = parseFloat(document.getElementById("t6").value) || 0;
-
-                      const s7 = parseFloat(document.getElementById("s7").value) || 0;
-                      const f7 = parseFloat(document.getElementById("t7").value) || 0;
-
-                      const s8 = parseFloat(document.getElementById("s8").value) || 0;
-                      const f8 = parseFloat(document.getElementById("t8").value) || 0;
-
-                      const s9 = parseFloat(document.getElementById("s9").value) || 0;
+                       const s9 = parseFloat(document.getElementById("s9").value) || 0;
                       const f9 = parseFloat(document.getElementById("t9").value) || 0;
+                         if(s9<0||s9>3||f9<1||f9>10)
+                        {
+                            alert("Invalid input  Credits must be 0–3 and Points must be 1–10.");
+                            return;
+                        }
 
                       const temp = ((s1*f1)+(s2*f2)+(s3*f3)+(s4*f4)+(s5*f5)+(s6*f6)+(s7*f7)+(s8*f8)+(s9*f9))/21.0;
                       let str_final;
