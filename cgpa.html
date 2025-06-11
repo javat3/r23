@@ -59,7 +59,6 @@
 
     button {
       width: 100%;
-      background: linear-gradient(to right, #667eea, #764ba2);
       color: white;
       font-weight: bold;
       cursor: pointer;
@@ -69,7 +68,6 @@
     }
 
     button:hover {
-      background: linear-gradient(to right, #5a67d8, #6b46c1);
       transform: scale(1.02);
     }
 
@@ -104,6 +102,38 @@
         flex-direction: column;
       }
     }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+
+      .container {
+        box-shadow: none;
+        width: 100%;
+        padding: 0;
+      }
+
+      select, button {
+        display: none !important;
+      }
+
+      input {
+        border: none;
+        background: none;
+      }
+
+      .row {
+        margin-bottom: 10px;
+      }
+
+      .result {
+        color: black !important;
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -123,7 +153,13 @@
 
   <div id="inputContainer"></div>
 
-  <button onclick="calculateCGPA()">🎯 Calculate Weighted CGPA</button>
+  <button onclick="calculateCGPA()" style="background: linear-gradient(to right, #667eea, #764ba2);">
+    🎯 Calculate Weighted CGPA
+  </button>
+
+  <button onclick="printPage()" style="background: linear-gradient(to right, #11998e, #38ef7d); margin-top: 10px;">
+    🖨️ Print / Save as PDF
+  </button>
 
   <div class="result" id="result"></div>
 </div>
@@ -173,6 +209,10 @@
       result.style.color = '#1b9e44';
       result.innerHTML = `✅ Your CGPA is: <strong>${cgpa}</strong>`;
     }
+  }
+
+  function printPage() {
+    window.print();
   }
 </script>
 
