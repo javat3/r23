@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
   <title>Weighted CGPA Calculator</title>
   <link rel="icon" type="image/x-icon" href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
   <style>
@@ -10,55 +9,80 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0 20px;
+    body {
       font-family: 'Segoe UI', sans-serif;
-      background: url('https://plus.unsplash.com/premium_photo-1682125773446-259ce64f9dd7?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
-      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       min-height: 100vh;
-      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Gradient Background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        #a0d2eb 0%,
+        #e5eaf5 20%,
+        #d0bdf4 40%,
+        #8458B3 70%,
+        #a28089 100%
+      );
+      z-index: -3;
+    }
+
+    /* Randomly scattered watermark digits */
+    .watermark span {
+      position: absolute;
+      font-size: 50px;
+      font-weight: bold;
+      opacity: 0.05;
+      color: #000;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .watermark {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
     }
 
     .container {
-      background: #ffffff;
-      border-radius: 100px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px 30px 40px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      width: 95%;
+      max-width: 800px;
       text-align: center;
-      backdrop-filter: blur(12px);
-      border: 3px solid #444;
-      box-sizing: border-box;
+      backdrop-filter: blur(10px);
+      z-index: 1;
     }
 
     h1 {
       color: #2d2d2d;
-      margin-bottom: 30px;
-      font-size: 32px;
-      line-height: 1.2;
-    }
-
-    label {
-      font-weight: 600;
-      color: #2d2d2d;
-      font-size: 18px;
-      display: block;
-      margin-bottom: 8px;
-      text-align: left;
+      margin-bottom: 25px;
+      font-size: 28px;
     }
 
     select, input, button {
-      font-size: 18px;
+      font-size: 16px;
       border-radius: 10px;
       border: 1px solid #ccc;
-      padding: 14px;
+      padding: 12px;
       outline: none;
       transition: all 0.3s ease;
-      width: 100%;
-      margin-bottom: 16px;
-      box-sizing: border-box;
     }
 
     select:focus, input:focus {
@@ -66,19 +90,22 @@
       box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
     }
 
+    select {
+      width: 100%;
+    }
+
     button {
+      width: 100%;
       color: white;
       font-weight: bold;
       cursor: pointer;
       border: none;
+      margin-top: 20px;
       box-shadow: 0 5px 10px rgba(102, 126, 234, 0.4);
-      transition: transform 0.2s ease;
-      padding: 16px;
-      user-select: none;
     }
 
     button:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
     .sem-label {
@@ -86,14 +113,13 @@
       text-align: left;
       font-weight: 600;
       margin-top: 15px;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       color: #444;
-      font-size: 16px;
     }
 
     .row {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       justify-content: space-between;
     }
 
@@ -102,77 +128,37 @@
     }
 
     .result {
-      margin-top: 30px;
-      font-size: 24px;
+      margin-top: 25px;
+      font-size: 22px;
       font-weight: bold;
       color: #1b9e44;
-      word-wrap: break-word;
-      min-height: 1.4em;
-      text-align: center;
     }
 
     @media (max-width: 600px) {
-      .container {
-        max-width: 100%;
-        padding: 25px 20px 30px;
-      }
-
-      h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
-
-      label {
-        font-size: 16px;
-      }
-
-      select, input, button {
-        font-size: 16px;
-        padding: 12px;
-        margin-bottom: 12px;
-      }
-
       .row {
         flex-direction: column;
       }
 
-      .row input {
-        width: 100%;
-      }
-
-      .result {
-        font-size: 20px;
-        margin-top: 20px;
+      .container {
+        max-width: 100%;
+        padding: 20px;
       }
     }
 
     @media print {
-      html, body {
-        background: white !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        height: auto !important;
+      .watermark {
+        display: none;
+      }
+
+      body {
+        background: white;
+        color: black;
       }
 
       .container {
-        box-shadow: none !important;
-        border: 1px solid #000 !important;
-        width: 100% !important;
-        max-width: none !important;
-        padding: 8px 10px !important;
-        margin: 0 auto !important;
-        border-radius: 0 !important;
-
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-
-        font-size: 14px !important;
-      }
-
-      label, .sem-label {
-        font-size: 12px !important;
-        margin-top: 5px !important;
-        margin-bottom: 4px !important;
+        box-shadow: none;
+        width: 100%;
+        padding: 0;
       }
 
       select, button {
@@ -180,113 +166,123 @@
       }
 
       input {
-        border: none !important;
-        background: none !important;
-        font-size: 12px !important;
-        padding: 6px !important;
-        margin-bottom: 6px !important;
+        border: none;
+        background: none;
       }
 
       .row {
-        display: block !important; /* stack inputs vertically */
-        margin-bottom: 8px !important;
-      }
-
-      .row input {
-        width: 100% !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 10px;
       }
 
       .result {
         color: black !important;
-        font-size: 16px !important;
-        min-height: 1.4em;
-        text-align: center;
-        margin-top: 15px !important;
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>📘 Weighted CGPA Calculator</h1>
+<div class="watermark" id="watermark"></div>
 
-    <label for="semCount">Select Number of Semesters:</label>
-    <select id="semCount" onchange="createInputs()">
-      <option value="">-- Select --</option>
-      <script>
-        for (let i = 1; i <= 8; i++) {
-          document.write(`<option value="${i}">${i}</option>`);
-        }
-      </script>
-    </select>
+<div class="container">
+  <h1>📘 Weighted CGPA Calculator</h1>
 
-    <div id="inputContainer"></div>
+  <label for="semCount"><strong>Select Number of Semesters:</strong></label>
+  <table style="width: 100%; margin-bottom: 20px;">
+    <tr>
+      <td>
+        <select id="semCount" onchange="createInputs()" style="width: 100%; text-align: center; text-align-last: center;">
+          <option value="">~~~ Select ~~~</option>
+          <script>
+            for (let i = 1; i <= 8; i++) {
+              document.write(`<option value="${i}">${i}</option>`);
+            }
+          </script>
+        </select>
+      </td>
+    </tr>
+  </table>
 
-    <button onclick="calculateCGPA()" style="background: linear-gradient(to right, #667eea, #764ba2);">
-      🎯 Calculate Weighted CGPA
-    </button>
+  <div id="inputContainer"></div>
 
-    <button onclick="printPage()" style="background: linear-gradient(to right, #11998e, #38ef7d); margin-top: 10px;">
-      🖨️ Print / Save as PDF
-    </button>
+  <button onclick="calculateCGPA()" style="background: linear-gradient(to right, #667eea, #764ba2);">
+    🎯 Calculate Weighted CGPA
+  </button>
 
-    <div class="result" id="result"></div>
-  </div>
+  <button onclick="printPage()" style="background: linear-gradient(to right, #11998e, #38ef7d); margin-top: 10px;">
+    🖨️ Print / Save as PDF
+  </button>
 
-  <script>
-    function createInputs() {
-      const count = document.getElementById('semCount').value;
-      const container = document.getElementById('inputContainer');
-      container.innerHTML = '';
+  <div class="result" id="result"></div>
+</div>
 
-      for (let i = 1; i <= count; i++) {
-        container.innerHTML += `
-          <div class="sem-label">Semester ${i}</div>
-          <div class="row">
-            <input type="number" id="gpa${i}" min="0" max="10" step="0.01" placeholder="GPA (0 - 10)">
-            <input type="number" id="credits${i}" min="1" step="1" placeholder="Credits">
-          </div>
-        `;
+<script>
+  function createInputs() {
+    const count = document.getElementById('semCount').value;
+    const container = document.getElementById('inputContainer');
+    container.innerHTML = '';
+
+    for (let i = 1; i <= count; i++) {
+      container.innerHTML += `
+        <div class="sem-label">Semester ${i}</div>
+        <div class="row">
+          <input type="number" id="gpa${i}" min="0" max="10" step="0.01" placeholder="GPA (0 - 10)">
+          <input type="number" id="credits${i}" min="1" step="1" placeholder="Credits">
+        </div>
+      `;
+    }
+  }
+
+  function calculateCGPA() {
+    const count = parseInt(document.getElementById('semCount').value);
+    let totalWeighted = 0;
+    let totalCredits = 0;
+    let valid = true;
+
+    for (let i = 1; i <= count; i++) {
+      const gpa = parseFloat(document.getElementById(`gpa${i}`).value);
+      const credits = parseFloat(document.getElementById(`credits${i}`).value);
+
+      if (isNaN(gpa) || gpa < 0 || gpa > 10 || isNaN(credits) || credits <= 0) {
+        valid = false;
+        break;
       }
+
+      totalWeighted += gpa * credits;
+      totalCredits += credits;
     }
 
-    function calculateCGPA() {
-      const count = parseInt(document.getElementById('semCount').value);
-      let totalWeighted = 0;
-      let totalCredits = 0;
-      let valid = true;
-
-      for (let i = 1; i <= count; i++) {
-        const gpa = parseFloat(document.getElementById(`gpa${i}`).value);
-        const credits = parseFloat(document.getElementById(`credits${i}`).value);
-
-        if (isNaN(gpa) || gpa < 0 || gpa > 10 || isNaN(credits) || credits <= 0) {
-          valid = false;
-          break;
-        }
-
-        totalWeighted += gpa * credits;
-        totalCredits += credits;
-      }
-
-      const result = document.getElementById('result');
-      if (!valid || count === 0) {
-        result.innerHTML = "⚠️ Please enter valid GPA and Credit values.";
-        result.style.color = 'red';
-      } else {
-        const cgpa = (totalWeighted / totalCredits).toFixed(2);
-        result.style.color = '#1b9e44';
-        result.innerHTML = `✅ Your CGPA is: <strong>${cgpa}</strong>`;
-      }
+    const result = document.getElementById('result');
+    if (!valid || count === 0) {
+      result.innerHTML = "⚠️ Please enter valid GPA and Credit values.";
+      result.style.color = 'red';
+    } else {
+      const cgpa = (totalWeighted / totalCredits).toFixed(2);
+      result.style.color = '#1b9e44';
+      result.innerHTML = `✅ Your CGPA is: <strong>${cgpa}</strong>`;
     }
+  }
 
-    function printPage() {
-      window.print();
-    }
-  </script>
+  function printPage() {
+    window.print();
+  }
+
+  // Create randomly positioned watermark digits
+  const watermarkContainer = document.getElementById('watermark');
+  const digitCount = 300; // Adjust for more/less density
+
+  for (let i = 0; i < digitCount; i++) {
+    const digit = Math.floor(Math.random() * 10);
+    const span = document.createElement('span');
+    span.textContent = digit;
+    span.style.top = `${Math.random() * 100}%`;
+    span.style.left = `${Math.random() * 100}%`;
+    span.style.fontSize = `${30 + Math.random() * 40}px`;
+    span.style.opacity = `${0.03 + Math.random() * 0.05}`;
+    watermarkContainer.appendChild(span);
+  }
+</script>
 
 </body>
 </html>
-
