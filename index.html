@@ -2,83 +2,132 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="icon" type="image/x-icon" href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
-    <title>SGPA/CGPA Calculator</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="icon" type="image/x-icon"
+    href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
+  <title>SGPA/CGPA Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-image: url('https://as2.ftcdn.net/v2/jpg/00/74/46/43/1000_F_74464336_JIU6Ir1BI61pvlrpDAQjcfYmLSMhubw4.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://as2.ftcdn.net/v2/jpg/00/74/46/43/1000_F_74464336_JIU6Ir1BI61pvlrpDAQjcfYmLSMhubw4.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .button-container {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 40px 60px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
+    .button-container {
+      position: relative;
+      backdrop-filter: blur(10px);
+      background-color: #fff700; /* Bright Yellow */
+      padding: 60px 80px;
+      border-radius: 25px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 35px;
+      border: 3px solid #000;
+      overflow: hidden;
+    }
 
-        .button-container a {
-            display: inline-block;
-            width: 250px;
-            padding: 18px 25px;
-            font-size: 20px;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.8);
-            color: #222;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 2px solid #000;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
+    .button-container::before {
+      content: "✷   ✷     ✷ ✷   ✷ ✷ ✷  ✷ ✷  ✷  ✷ ✷ \A ✷    ✷     ✷    ✷  ✷ ✷ ✷ ✷ ✷ ✷ ✷ \A ✷  ✷     ✷ ✷ ✷ ✷ ✷ ✷ ✷ ✷ ✷  \A ✷   ✷     ✷   ✷  ✷ ✷ ✷ ✷ ✷ \A ✷  ✷ ✷     ✷    ✷   ✷ ✷ ✷ ✷ ✷ ✷ ✷ \A ✷ ✷  ✷    ✷    ✷     ✷ ✷ ✷ ✷ ✷ ✷ ✷ ✷";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: rgba(0, 0, 0, 0.35);
+      font-size: 38px;
+      line-height: 3.2;
+      white-space: pre-wrap;
+      pointer-events: none;
+      z-index: 0;
+      transform: rotate(-12deg);
+      user-select: none;
+    }
 
-        .button-container a:hover {
-            background-color: #1fdc0d;
-            color: #fff;
-            border-color: #0a9900;
-            transform: scale(1.08);
-        }
+    .button-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1;
+    }
 
-        @media (max-width: 500px) {
-            .button-container {
-                padding: 30px 20px;
-            }
+    .arrow {
+      font-size: 24px;
+      color: white;
+      text-shadow: 1px 1px 2px #000;
+    }
 
-            .button-container a {
-                width: 200px;
-                font-size: 18px;
-            }
-        }
-    </style>
+    .button-container a {
+      display: inline-block;
+      width: 250px;
+      padding: 18px 25px;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      background-color: #333333; /* Dark Charcoal */
+      color: #ffffff;
+      text-align: center;
+      transition: all 0.4s ease;
+      outline: none;
+      border: none;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+      clip-path: polygon(
+        50% 0%, 65% 10%, 100% 40%, 100% 60%, 65% 90%,
+        50% 100%, 35% 90%, 0% 60%, 0% 40%, 35% 10%
+      ); /* Leaf Shape */
+    }
+
+    .button-container a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 15px #000;
+    }
+
+    @media (max-width: 500px) {
+      .button-container {
+        padding: 30px 20px;
+        align-items: center;
+      }
+
+      .button-container a {
+        width: 200px;
+        font-size: 18px;
+      }
+
+      .arrow {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="button-container">
-        <a href="sgpa.html">SGPA Calculator</a>
-        <a href="cgpa.html">CGPA Calculator</a>
+  <div class="button-container">
+    <div class="button-wrapper">
+      <span class="arrow">➡️</span>
+      <a href="sgpa.html">SGPA Calculator</a>
     </div>
+    <div class="button-wrapper">
+      <span class="arrow">➡️</span>
+      <a href="cgpa.html">CGPA Calculator</a>
+    </div>
+  </div>
 
 </body>
 
