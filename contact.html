@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | SGPA/CGPA Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .contact-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      color: white;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: slideUp 0.8s ease;
+      z-index: 2;
+    }
+
+    .contact-card h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .contact-card p {
+      font-size: 16px;
+      margin: 10px 0;
+      color: #f0f0f0;
+    }
+
+    .contact-links {
+      margin-top: 30px;
+    }
+
+    .contact-links a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      border-radius: 30px;
+      background-color: #ffffff;
+      color: #ff6f91;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      background-color: #ff6f91;
+      color: white;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    .back-button {
+      margin-top: 30px;
+      display: inline-block;
+      color: white;
+      text-decoration: underline;
+      font-size: 14px;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-card {
+        padding: 25px;
+      }
+
+      .contact-card h1 {
+        font-size: 24px;
+      }
+
+      .contact-links a {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+
+    /* Optional particle effect background */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particles span {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles">
+    <!-- Simple particle simulation -->
+    <span style="left: 10%; animation-delay: 0s;"></span>
+    <span style="left: 25%; animation-delay: 1.5s;"></span>
+    <span style="left: 40%; animation-delay: 3s;"></span>
+    <span style="left: 55%; animation-delay: 4.5s;"></span>
+    <span style="left: 70%; animation-delay: 6s;"></span>
+    <span style="left: 85%; animation-delay: 7.5s;"></span>
+    <span style="left: 95%; animation-delay: 9s;"></span>
+  </div>
+
+  <div class="contact-card">
+    <h1>Contact Us</h1>
+    <p>Have questions, suggestions, or feedback?</p>
+    <p>We'd love to hear from you!</p>
+
+    <div class="contact-links">
+      <a href="mailto:phatannagulsharif786@outlook.com" target="_blank">📧 Email</a>
+      <a href="www.linkedin.com/in/shaik-nagul-sharif-53b067293" target="_blank">🔗 LinkedIn</a>
+    </div>
+
+    <a href="index.html" class="back-button">⬅ Back to Home</a>
+  </div>
+
+  <script>
+    console.log("Contact page loaded!");
+  </script>
+
+</body>
+</html>
