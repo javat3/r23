@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | SGPA/CGPA Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #89f7fe, #66a6ff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 700px;
+      width: 100%;
+      color: #fff;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      animation: fadeInUp 1s ease;
+    }
+
+    .card h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #f1f1f1;
+      margin: 10px 0;
+    }
+
+    ul {
+      margin: 15px 0 10px 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .version {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: right;
+      color: #eeeeee;
+      opacity: 0.8;
+    }
+
+    .icon {
+      font-size: 50px;
+      text-align: center;
+      margin-bottom: 20px;
+      animation: pop 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .btn-home {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #2575fc;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+      text-align: center;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-home:hover {
+      background-color: #2575fc;
+      color: #ffffff;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 25px;
+      }
+      .card h1 {
+        font-size: 26px;
+      }
+      .card p, li {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="icon">📊</div>
+    <h1>About This Calculator</h1>
+    <p>
+      Welcome to the SGPA/CGPA Calculator – your smart academic companion! This tool helps students calculate their grade performance with ease, speed, and style.
+    </p>
+    <p><strong>Key Features:</strong></p>
+    <ul>
+      <li>🎓 Easy SGPA calculation</li>
+      <li>📚 Accurate CGPA computation</li>
+      <li>🖐️ Clean and user-friendly design</li>
+      <li>📱 100% Mobile responsive</li>
+      <li>💡 Lightweight and fast</li>
+    </ul>
+    <p>
+      Whether you're a student or an academic advisor, this calculator is built for everyone. No complicated steps — just enter, calculate, and succeed!
+    </p>
+    <div class="version">Version 1.0.0</div>
+    <a href="index.html" class="btn-home">⬅ Back to Home</a>
+  </div>
+
+  <script>
+    console.log("About page loaded successfully!");
+  </script>
+
+</body>
+</html>
