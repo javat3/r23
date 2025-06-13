@@ -1,134 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <link rel="icon" type="image/x-icon"
-    href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SGPA/CGPA Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      background-image: url('https://as2.ftcdn.net/v2/jpg/00/74/46/43/1000_F_74464336_JIU6Ir1BI61pvlrpDAQjcfYmLSMhubw4.jpg');
+      font-family: 'Poppins', sans-serif;
+      background: url('https://img.freepik.com/free-vector/online-education-background-gradient-style_23-2148827200.jpg?t=st=1718260001~exp=1718263601~hmac=6e4c55ab5ad352b265bd91d6170280e75c2435d342d3d3e810b2ae7e3dc64ad6&w=1380') no-repeat center center fixed;
       background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
-      min-height: 100vh;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Hamburger Menu */
+    .menu-icon {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      width: 40px;
+      height: 30px;
+      z-index: 2000;
+      cursor: pointer;
+    }
+
+    .menu-icon div {
+      width: 100%;
+      height: 5px;
+      background-color: white;
+      margin: 5px 0;
+      border-radius: 5px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 5px white;
+    }
+
+    /* Sidebar Menu */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 60px 20px;
+      transition: 0.3s ease;
+      z-index: 1500;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    .sidebar.active {
+      right: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 20px 0;
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #00ccff;
+      box-shadow: 0 0 10px #00ccff;
+    }
+
+    /* Main Content */
+    .container {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .button-container {
-      position: relative;
-      backdrop-filter: blur(10px);
-      background-color: #fff700; /* Bright Yellow */
-      padding: 60px 80px;
+    .content-box {
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 25px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 35px;
-      border: 3px solid #000;
-      overflow: hidden;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 0 20px #ff00cc, 0 0 30px #3333ff, 0 0 40px #00ffcc;
+      backdrop-filter: blur(15px);
     }
 
-    .button-container::before {
-      content: "✷   ✷     ✷ ✷   ✷ ✷ ✷  ✷ ✷  ✷  ✷ ✷ \A ✷    ✷     ✷    ✷  ✷ ✷ ✷ ✷ ✷ ✷ ✷ \A ✷  ✷     ✷ ✷ ✷ ✷ ✷ ✷ ✷ ✷ ✷  \A ✷   ✷     ✷   ✷  ✷ ✷ ✷ ✷ ✷ \A ✷  ✷ ✷     ✷    ✷   ✷ ✷ ✷ ✷ ✷ ✷ ✷ \A ✷ ✷  ✷    ✷    ✷     ✷ ✷ ✷ ✷ ✷ ✷ ✷ ✷";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      color: rgba(0, 0, 0, 0.35);
-      font-size: 38px;
-      line-height: 3.2;
-      white-space: pre-wrap;
-      pointer-events: none;
-      z-index: 0;
-      transform: rotate(-12deg);
-      user-select: none;
+    h1 {
+      font-size: 36px;
+      color: white;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px #ffffff88;
     }
 
-    .button-wrapper {
+    .btn {
       display: flex;
       align-items: center;
-      gap: 10px;
-      z-index: 1;
-    }
-
-    .arrow {
-      font-size: 24px;
-      color: white;
-      text-shadow: 1px 1px 2px #000;
-    }
-
-    .button-container a {
-      display: inline-block;
-      width: 250px;
-      padding: 18px 25px;
-      font-size: 20px;
-      font-weight: bold;
-      text-decoration: none;
-      background-color: #333333; /* Dark Charcoal */
-      color: #ffffff;
-      text-align: center;
-      transition: all 0.4s ease;
-      outline: none;
+      justify-content: center;
+      gap: 12px;
+      width: 280px;
+      margin: 20px auto;
+      padding: 16px 30px;
       border: none;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      z-index: 1;
-      text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
-      clip-path: polygon(
-        50% 0%, 65% 10%, 100% 40%, 100% 60%, 65% 90%,
-        50% 100%, 35% 90%, 0% 60%, 0% 40%, 35% 10%
-      ); /* Leaf Shape */
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .button-container a:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 15px #000;
+    .btn:hover {
+      transform: scale(1.05);
     }
 
-    @media (max-width: 500px) {
-      .button-container {
-        padding: 30px 20px;
-        align-items: center;
+    .sgpa {
+      background: linear-gradient(90deg, #0099ff, #00ccff);
+      box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+    }
+
+    .cgpa {
+      background: linear-gradient(90deg, #00ff99, #00cc66);
+      box-shadow: 0 0 10px #00ff99, 0 0 20px #00cc66;
+    }
+
+    .btn img {
+      height: 26px;
+      width: 26px;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
       }
 
-      .button-container a {
-        width: 200px;
-        font-size: 18px;
+      .btn {
+        width: 90%;
+        font-size: 16px;
       }
 
-      .arrow {
-        display: none;
+      .menu-icon {
+        right: 15px;
+        top: 15px;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <div class="button-container">
-    <div class="button-wrapper">
-      <span class="arrow">➡️</span>
-      <a href="sgpa.html">SGPA Calculator</a>
-    </div>
-    <div class="button-wrapper">
-      <span class="arrow">➡️</span>
-      <a href="cgpa.html">CGPA Calculator</a>
+  <!-- Hamburger Icon -->
+  <div class="menu-icon" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Sidebar Menu -->
+  <!-- Sidebar Menu -->
+<div class="sidebar" id="sidebar">
+  <a href="#">🏠 Home</a>
+  <a href="#">📚 Syllabus</a>
+  <a href="#">ℹ️ About</a>
+  <a href="#">📞 Contact</a>
+</div>
+
+
+  <!-- Main Container -->
+  <div class="container">
+    <div class="content-box">
+      <h1>SGPA/CGPA Calculator</h1>
+
+      <!-- SGPA Button -->
+      <a href="sgpa.html" class="btn sgpa">
+        <img src="https://cdn-icons-png.flaticon.com/512/3410/3410735.png" alt="SGPA Book Icon">
+        SGPA Calculator
+      </a>
+
+      <!-- CGPA Button -->
+      <a href="cgpa.html" class="btn cgpa">
+        <img src="https://cdn-icons-png.flaticon.com/512/3410/3410736.png" alt="CGPA Book Icon">
+        CGPA Calculator
+      </a>
     </div>
   </div>
 
-</body>
+  <!-- JavaScript for Sidebar Toggle -->
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("active");
+    }
+  </script>
 
+</body>
 </html>
