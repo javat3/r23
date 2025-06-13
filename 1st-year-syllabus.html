@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1st Year Syllabus</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #d1c4e9, #f8bbd0, #c8e6c9);
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 270px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .branch {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px 15px;
+      background: linear-gradient(to right, #2196f3, #00bcd4);
+      border: none;
+      border-radius: 40px;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #1976d2, #0097a7);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+
+      .btn-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📘 1st Year Syllabus PDFs</h1>
+
+  <div class="container">
+
+    <!-- CIVIL -->
+    <div class="card">
+      <div class="branch">🏗️ CIVIL</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/civil_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/civil_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE -->
+    <div class="card">
+      <div class="branch">💻 CSE</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/cse_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/cse_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE-AI -->
+    <div class="card">
+      <div class="branch">🤖 CSE-AI</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/cseai_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/cseai_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE-AI&ML -->
+    <div class="card">
+      <div class="branch">🧠 CSE-AI&ML</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/cseaiml_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/cseaiml_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE-CYBER -->
+    <div class="card">
+      <div class="branch">🔐 CSE-CYBER</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/csecyber_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/csecyber_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE-DATA -->
+    <div class="card">
+      <div class="branch">📊 CSE-DATA</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/csedata_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/csedata_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- ECE -->
+    <div class="card">
+      <div class="branch">📡 ECE</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/ece_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/ece_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- EEE -->
+    <div class="card">
+      <div class="branch">⚡ EEE</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/eee_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/eee_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- IoT -->
+    <div class="card">
+      <div class="branch">🌐 IoT</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/iot_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/iot_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- ME -->
+    <div class="card">
+      <div class="branch">🔧 ME</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/me_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/me_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- IT -->
+    <div class="card">
+      <div class="branch">🖥️ IT</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('pdfs/it_sem1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('pdfs/it_sem2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function openPDF(path) {
+      window.open(path, "_blank");
+    }
+  </script>
+
+</body>
+</html>
