@@ -171,7 +171,14 @@
   <!-- Sidebar Menu -->
 <div class="sidebar" id="sidebar">
   <a href="#">🏠 Home</a>
-  <a href="#">📚 Syllabus</a>
+  <div class="dropdown">
+  <a href="javascript:void(0);" onclick="toggleSyllabus()">📚 Syllabus ▾</a>
+  <div id="syllabusOptions" style="display: none; padding-left: 20px;">
+    <a href="#">📘 1st Year Syllabus</a>
+    <a href="#">📙 2nd Year Syllabus</a>
+  </div>
+</div>
+
   <a href="#">ℹ️ About</a>
   <a href="#">📞 Contact</a>
 </div>
@@ -198,11 +205,17 @@
 
   <!-- JavaScript for Sidebar Toggle -->
   <script>
-    function toggleMenu() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("active");
-    }
-  </script>
+  function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("active");
+  }
+
+  function toggleSyllabus() {
+    const submenu = document.getElementById("syllabusOptions");
+    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+  }
+</script>
+
 
 </body>
 </html>
