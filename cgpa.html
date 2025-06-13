@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <title>Weighted CGPA Calculator</title>
   <link rel="icon" type="image/x-icon" href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
+      font-family: 'Ubuntu', sans-serif;
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
       display: flex;
@@ -39,7 +40,7 @@
       z-index: -3;
     }
 
-    /* Randomly scattered watermark digits */
+    /* Watermark */
     .watermark span {
       position: absolute;
       font-size: 50px;
@@ -85,13 +86,10 @@
       transition: all 0.3s ease;
     }
 
-    select:focus, input:focus {
-      border-color: #667eea;
-      box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
-    }
-
     select {
       width: 100%;
+      text-align: center;
+      text-align-last: center;
     }
 
     button {
@@ -102,10 +100,6 @@
       border: none;
       margin-top: 20px;
       box-shadow: 0 5px 10px rgba(102, 126, 234, 0.4);
-    }
-
-    button:hover {
-      transform: scale(1.02);
     }
 
     .sem-label {
@@ -179,30 +173,106 @@
         font-size: 20px;
       }
     }
+
+    /* Hamburger & Menu */
+    .hamburger {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: white;
+      margin: 5px 0;
+      border-radius: 2px;
+    }
+
+    .menu {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 15px;
+      display: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      min-width: 200px;
+    }
+
+    .menu a {
+      display: block;
+      text-decoration: none;
+      color: #003366;
+      padding: 10px;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .menu a:last-child {
+      border-bottom: none;
+    }
+
+    .menu.show {
+      display: block;
+    }
+
+    .has-submenu:hover .submenu {
+      display: block;
+    }
+
+    .submenu {
+      display: none;
+      padding-left: 15px;
+    }
+
+    .has-submenu > a::after {
+      content: " ▼";
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
 
+<!-- Hamburger Menu -->
+<div class="hamburger" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<div class="menu" id="menu">
+  <a href="index.html">🏠 Home</a>
+  <div class="has-submenu">
+    <a href="#">📚 Syllabus</a>
+    <div class="submenu">
+      <a href="1st-year-syllabus.html">📘 1st Year Syllabus</a>
+      <a href="2nd-year-syllabus.html">📗 2nd Year Syllabus</a>
+    </div>
+  </div>
+  <a href="about.html">ℹ️ About</a>
+  <a href="contact.html">📞 Contact</a>
+</div>
+
+<!-- Watermark Background -->
 <div class="watermark" id="watermark"></div>
 
+<!-- Calculator Content -->
 <div class="container">
   <h1>📘 Weighted CGPA Calculator</h1>
 
   <label for="semCount"><strong>Select Number of Semesters:</strong></label>
-  <table style="width: 100%; margin-bottom: 20px;">
-    <tr>
-      <td>
-        <select id="semCount" onchange="createInputs()" style="width: 100%; text-align: center; text-align-last: center;">
-          <option value="">~~~ Select ~~~</option>
-          <script>
-            for (let i = 1; i <= 8; i++) {
-              document.write(`<option value="${i}">${i}</option>`);
-            }
-          </script>
-        </select>
-      </td>
-    </tr>
-  </table>
+  <select id="semCount" onchange="createInputs()">
+    <option value="">~~~ Select ~~~</option>
+    <script>
+      for (let i = 1; i <= 8; i++) {
+        document.write(`<option value="${i}">${i}</option>`);
+      }
+    </script>
+  </select>
 
   <div id="inputContainer"></div>
 
@@ -210,7 +280,7 @@
     🎯 Calculate Weighted CGPA
   </button>
 
-  <button onclick="printPage()" style="background: linear-gradient(to right, #11998e, #38ef7d); margin-top: 10px;">
+  <button onclick="printPage()" style="background: linear-gradient(to right, #11998e, #38ef7d);">
     🖨️ Print / Save as PDF
   </button>
 
@@ -218,6 +288,18 @@
 </div>
 
 <script>
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+  }
+
+  document.addEventListener("click", function(e) {
+    const menu = document.getElementById("menu");
+    const burger = document.querySelector(".hamburger");
+    if (!menu.contains(e.target) && !burger.contains(e.target)) {
+      menu.classList.remove("show");
+    }
+  });
+
   function createInputs() {
     const count = document.getElementById('semCount').value;
     const container = document.getElementById('inputContainer');
@@ -268,11 +350,9 @@
     window.print();
   }
 
-  // Create randomly positioned watermark digits
+  // Watermark
   const watermarkContainer = document.getElementById('watermark');
-  const digitCount = 300; // Adjust for more/less density
-
-  for (let i = 0; i < digitCount; i++) {
+  for (let i = 0; i < 300; i++) {
     const digit = Math.floor(Math.random() * 10);
     const span = document.createElement('span');
     span.textContent = digit;
