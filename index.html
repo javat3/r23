@@ -14,13 +14,19 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: url('https://img.freepik.com/free-vector/online-education-background-gradient-style_23-2148827200.jpg?t=st=1718260001~exp=1718263601~hmac=6e4c55ab5ad352b265bd91d6170280e75c2435d342d3d3e810b2ae7e3dc64ad6&w=1380') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(-45deg, #7b2ff7, #f107a3, #00c6ff, #34e89e);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       height: 100vh;
       overflow-x: hidden;
     }
 
-    /* Hamburger Menu */
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .menu-icon {
       position: fixed;
       top: 20px;
@@ -41,7 +47,6 @@
       box-shadow: 0 0 5px white;
     }
 
-    /* Sidebar Menu */
     .sidebar {
       position: fixed;
       top: 0;
@@ -77,7 +82,6 @@
       box-shadow: 0 0 10px #00ccff;
     }
 
-    /* Main Content */
     .container {
       position: relative;
       top: 50%;
@@ -86,22 +90,27 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
 
     .content-box {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 25px;
       padding: 50px 40px;
       text-align: center;
-      box-shadow: 0 0 20px #ff00cc, 0 0 30px #3333ff, 0 0 40px #00ffcc;
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
       backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      max-width: 400px;
+      width: 100%;
     }
 
     h1 {
       font-size: 36px;
       color: white;
       margin-bottom: 40px;
-      text-shadow: 0 0 10px #ffffff88;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     }
 
     .btn {
@@ -109,7 +118,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      width: 280px;
+      width: 100%;
       margin: 20px auto;
       padding: 16px 30px;
       border: none;
@@ -118,21 +127,20 @@
       font-weight: bold;
       color: white;
       text-decoration: none;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.3s ease-in-out;
     }
 
     .btn:hover {
-      transform: scale(1.05);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     }
 
     .sgpa {
-      background: linear-gradient(90deg, #0099ff, #00ccff);
-      box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
     }
 
     .cgpa {
       background: linear-gradient(90deg, #00ff99, #00cc66);
-      box-shadow: 0 0 10px #00ff99, 0 0 20px #00cc66;
     }
 
     .btn img {
@@ -147,8 +155,8 @@
       }
 
       .btn {
-        width: 90%;
         font-size: 16px;
+        width: 90%;
       }
 
       .menu-icon {
@@ -168,34 +176,29 @@
   </div>
 
   <!-- Sidebar Menu -->
-  <!-- Sidebar Menu -->
-<div class="sidebar" id="sidebar">
-  <a href="#">🏠 Home</a>
-  <div class="dropdown">
-  <a href="javascript:void(0);" onclick="toggleSyllabus()">📚 Syllabus ▾</a>
-  <div id="syllabusOptions" style="display: none; padding-left: 20px;">
-    <a href="#">📘 1st Year Syllabus</a>
-    <a href="#">📙 2nd Year Syllabus</a>
+  <div class="sidebar" id="sidebar">
+    <a href="#">🏠 Home</a>
+    <div class="dropdown">
+      <a href="javascript:void(0);" onclick="toggleSyllabus()">📚 Syllabus ▾</a>
+      <div id="syllabusOptions" style="display: none; padding-left: 20px;">
+        <a href="#">📘 1st Year Syllabus</a>
+        <a href="#">📙 2nd Year Syllabus</a>
+      </div>
+    </div>
+    <a href="#">ℹ️ About</a>
+    <a href="#">📞 Contact</a>
   </div>
-</div>
-
-  <a href="#">ℹ️ About</a>
-  <a href="#">📞 Contact</a>
-</div>
-
 
   <!-- Main Container -->
   <div class="container">
     <div class="content-box">
       <h1>SGPA/CGPA Calculator</h1>
 
-      <!-- SGPA Button -->
       <a href="sgpa.html" class="btn sgpa">
         <img src="https://cdn-icons-png.flaticon.com/512/3410/3410735.png" alt="SGPA Book Icon">
         SGPA Calculator
       </a>
 
-      <!-- CGPA Button -->
       <a href="cgpa.html" class="btn cgpa">
         <img src="https://cdn-icons-png.flaticon.com/512/3410/3410736.png" alt="CGPA Book Icon">
         CGPA Calculator
@@ -203,19 +206,18 @@
     </div>
   </div>
 
-  <!-- JavaScript for Sidebar Toggle -->
+  <!-- JavaScript -->
   <script>
-  function toggleMenu() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("active");
-  }
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("active");
+    }
 
-  function toggleSyllabus() {
-    const submenu = document.getElementById("syllabusOptions");
-    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
-  }
-</script>
-
+    function toggleSyllabus() {
+      const submenu = document.getElementById("syllabusOptions");
+      submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>
