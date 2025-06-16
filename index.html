@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SGPA/CGPA Calculator</title>
+  <title>R23 Mathcore</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
+
+  <!-- Meta Description -->
+<meta name="description" content="Free online SGPA and CGPA calculator for students. Instantly compute your semester and cumulative GPA with ease and accuracy." />
+
+<!-- Meta Keywords (optional, modern SEO mostly ignores this) -->
+<meta name="keywords" content="SGPA calculator, CGPA calculator, GPA calculator,R23 Mathcore, engineering GPA tool, student grade calculator, online SGPA, online CGPA" />
+
+<!-- Author -->
+<meta name="author" content="Your Name or Brand" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://www.yourwebsite.com/" />
+
+<!-- Open Graph tags (for social media sharing) -->
+<meta property="og:title" content="SGPA/CGPA Calculator – Instant GPA Calculation Tool" />
+<meta property="og:description" content="Use our SGPA and CGPA calculator to compute your academic grades quickly and accurately. Perfect for engineering and college students." />
+<meta property="og:url" content="https://www.yourwebsite.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.yourwebsite.com/preview-image.png" /> <!-- Optional: image for social media -->
   <style>
     * {
       margin: 0;
@@ -164,6 +184,70 @@
         top: 15px;
       }
     }
+    .about-contact {
+  text-align: center;
+  padding: 60px 20px;
+  margin-top: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+}
+
+.about-contact h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.about-contact p {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #eaeaea;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.contact-buttons a {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  color: white;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-buttons a:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5);
+}
+
+/* Optional: Individual gradients */
+#emailBtn {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+#linkedinBtn {
+  background: linear-gradient(135deg, #0072b1, #00aaff);
+}
+
+@media (max-width: 600px) {
+  .contact-buttons a {
+    width: 90%;
+    text-align: center;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -208,16 +292,49 @@
 
   <!-- JavaScript -->
   <script>
-    function toggleMenu() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("active");
+  function toggleMenu() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("active");
+  }
+
+  function toggleSyllabus() {
+    const submenu = document.getElementById("syllabusOptions");
+    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+  }
+
+  // Email & LinkedIn button scripts (global, not inside any function)
+  document.addEventListener("DOMContentLoaded", function () {
+    const emailBtn = document.getElementById("emailBtn");
+    const linkedinBtn = document.getElementById("linkedinBtn");
+
+    if (emailBtn) {
+      emailBtn.addEventListener("click", function () {
+        window.location.href = "mailto:your@email.com";
+      });
     }
 
-    function toggleSyllabus() {
-      const submenu = document.getElementById("syllabusOptions");
-      submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    if (linkedinBtn) {
+      linkedinBtn.addEventListener("click", function () {
+        window.open("https://www.linkedin.com/in/yourprofile", "_blank");
+      });
     }
-  </script>
+  });
+</script>
+
+<!-- About & Contact Section -->
+<section class="about-contact">
+  <h2>About</h2>
+  <p>
+    SGPA/CGPA Calculator helps students compute their semester and cumulative grade point averages with ease. Designed for simplicity and speed, it's your academic companion.
+  </p>
+
+  <h2>Contact</h2>
+ <div class="contact-buttons">
+  <a href="mailto:phatannagulsharif786@outlook.com" id="emailBtn">📧 Email</a>
+  <a href="https://www.linkedin.com/in/shaik-nagul-sharif-53b067293" id="linkedinBtn" target="_blank">🔗 LinkedIn</a>
+</div>
+
+</section>
 
 </body>
 </html>
