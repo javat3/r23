@@ -5,26 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>R23 Mathcore</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
 
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Free online SGPA and CGPA calculator for students. Instantly compute your semester and cumulative GPA with ease and accuracy." />
+  <meta name="keywords" content="SGPA calculator, CGPA calculator, GPA calculator, R23 Mathcore, engineering GPA tool, student grade calculator, online SGPA, online CGPA" />
+  <meta name="author" content="Phatan Nagul Sharif" />
+  <meta property="og:title" content="SGPA/CGPA Calculator – Instant GPA Calculation Tool" />
+  <meta property="og:description" content="Use our SGPA and CGPA calculator to compute your academic grades quickly and accurately. Perfect for engineering and college students." />
+  <meta property="og:type" content="website" />
 
- <link rel="icon" type="image/x-icon" href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
-
-  <!-- Meta Description -->
-<meta name="description" content="Free online SGPA and CGPA calculator for students. Instantly compute your semester and cumulative GPA with ease and accuracy." />
-
-
-<!-- Meta Keywords (optional, modern SEO mostly ignores this) -->
-<meta name="keywords" content="SGPA calculator, CGPA calculator, GPA calculator,R23 Mathcore, engineering GPA tool, student grade calculator, online SGPA, online CGPA" />
-
-
-<!-- Author -->
-<meta name="Phatan Nagul Sharif" content="" />
-
-
-<!-- Open Graph tags (for social media sharing) -->
-<meta property="og:title" content="SGPA/CGPA Calculator – Instant GPA Calculation Tool" />
-<meta property="og:description" content="Use our SGPA and CGPA calculator to compute your academic grades quickly and accurately. Perfect for engineering and college students." />/>
-<meta property="og:type" content="website" />
   <style>
     * {
       margin: 0;
@@ -47,32 +37,32 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Stylish Menu Bar */
     .glass-nav {
       width: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      padding: 15px 30px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      border-radius: 0 0 15px 15px;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
       color: #fff;
-      text-shadow: 0 0 10px #ff6ec4;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .menu {
       display: flex;
       list-style: none;
-      gap: 25px;
+      gap: 20px;
     }
 
     .menu li {
@@ -82,18 +72,18 @@
     .menu li a {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       padding: 10px 16px;
       color: #fff;
       font-size: 16px;
       text-decoration: none;
-      border-radius: 30px;
+      border-radius: 25px;
       transition: all 0.3s ease;
     }
 
     .menu li a:hover {
       background: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 12px #ffb6d9;
+      box-shadow: 0 0 12px #fff;
       transform: scale(1.05);
     }
 
@@ -102,9 +92,9 @@
       position: absolute;
       top: 45px;
       left: 0;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      border-radius: 12px;
+      background: #fff;
+      color: #333;
+      border-radius: 10px;
       padding: 10px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       z-index: 999;
@@ -116,10 +106,15 @@
     }
 
     .dropdown-content li a {
-      display: flex;
+      color: #333;
       padding: 8px 14px;
-      gap: 8px;
       white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .dropdown-content li a:hover {
+      background-color: #f0f0f0;
+      border-radius: 6px;
     }
 
     @keyframes fadeIn {
@@ -130,20 +125,24 @@
     @media (max-width: 768px) {
       .glass-nav {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
       }
 
       .menu {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-        margin-top: 15px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .menu li a {
+        font-size: 14px;
+        padding: 6px 10px;
       }
 
       .dropdown-content {
-        position: static;
-        box-shadow: none;
-        padding-left: 20px;
+        position: absolute;
       }
     }
 
@@ -250,7 +249,7 @@
 </head>
 <body>
 
-  <!-- Glassmorphic Menu -->
+  <!-- Stylish Menu Bar -->
   <nav class="glass-nav">
     <div class="logo">R23 Mathcore</div>
     <ul class="menu">
