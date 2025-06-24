@@ -85,9 +85,105 @@
         flex-direction: column;
       }
     }
+     /* Hamburger */
+    .hamburger {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: rgb(8, 0, 0);
+      margin: 5px 0;
+      border-radius: 2px;
+    }
+
+  .menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 15px;
+  display: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+  z-index: 9999; /* ✅ Stronger priority */
+}
+
+
+
+    .menu a {
+      display: block;
+      text-decoration: none;
+      color: #003366;
+      padding: 10px;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .menu a:last-child {
+      border-bottom: none;
+    }
+
+    .menu.show {
+      display: block;
+    }
+
+    .submenu {
+      display: none;
+      padding-left: 15px;
+    }
+
+    .has-submenu:hover .submenu {
+      display: block;
+    }
+
+    .has-submenu > a::after {
+      content: " ▼";
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+        padding: 15px 20px;
+      }
+
+      .button-container a {
+        font-size: 16px;
+        padding: 12px;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Hamburger Icon -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- Menu Items -->
+  <div class="menu" id="menu">
+    <a href="index.html">🏠 Home</a>
+    <div class="has-submenu">
+      <a href="#">📚 Syllabus</a>
+      <div class="submenu">
+        <a href="1st-year-syllabus">📘 1st Year Syllabus</a>
+        <a href="2nd-year-syllabus">📗 2nd Year Syllabus</a>
+        <a href="3rd-year-syllabus">📕 3rd Year Syllabus</a>
+      </div>
+    </div>
+    <a href="about.html">ℹ️ About</a>
+    <a href="contact.html">📞 Contact</a>
+  </div>
 
   <h1>📘 1st Year Syllabus PDFs</h1>
 
@@ -198,6 +294,17 @@
     function openPDF(path) {
       window.open(path, "_blank");
     }
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+
+    document.addEventListener("click", function(e) {
+      const menu = document.getElementById("menu");
+      const burger = document.querySelector(".hamburger");
+      if (!menu.contains(e.target) && !burger.contains(e.target)) {
+        menu.classList.remove("show");
+      }
+    });
   </script>
 
 </body>
