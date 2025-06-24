@@ -2,79 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SGPA Calculator</title>
-  <link rel="icon" href="https://img.freepik.com/free-vector/vector-education-logo_779267-2080.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2nd Year Syllabus</title>
   <style>
-    * {
+    /* Background Animation */
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Ubuntu', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #ff6b6b, #f06595, #845ef7, #339af0, #22b8cf, #20c997, #51cf66);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #ede7f6, #fff3e0, #fce4ec);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
       min-height: 100vh;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      flex: 1;
-      width: 100%;
-      padding: 20px;
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
+    /* Page Title */
     h1 {
-      font-size: 2.5rem;
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #003366;
-      padding: 20px 40px;
-      border-radius: 50px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      margin-bottom: 30px;
-      width: 90%;
-      max-width: 500px;
-    }
-
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 90%;
-      max-width: 300px;
-    }
-
-    .button-container a {
       text-align: center;
-      padding: 15px;
-      font-size: 18px;
+      padding: 20px;
+      font-size: 28px;
+      color: #333;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* Cards Container */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    /* Course Card */
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(6px);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 270px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Branch Title */
+    .branch {
+      font-size: 20px;
       font-weight: bold;
-      text-decoration: none;
-      border-radius: 30px;
-      background-color: rgba(255, 255, 255, 0.95);
-      color: #003366;
-      border: 2px solid #003366;
-      transition: all 0.3s ease-in-out;
+      margin-bottom: 15px;
+      color: #2c2c2c;
     }
 
-    .button-container a:hover {
-      background-color: #003366;
+    /* Button Container */
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Sem Buttons */
+    .btn {
+      flex: 1;
+      padding: 10px 15px;
+      background: linear-gradient(to right, #4fc3f7, #81d4fa);
+      border: none;
+      border-radius: 40px;
       color: white;
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #ffffff;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
     }
 
-    /* Hamburger */
+    .btn:hover {
+      background: linear-gradient(to right, #0288d1, #039be5);
+      transform: scale(1.05);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+
+      .btn-container {
+        flex-direction: column;
+      }
+    }
+     /* Hamburger */
     .hamburger {
       position: absolute;
       top: 20px;
@@ -86,22 +115,24 @@
     .hamburger div {
       width: 30px;
       height: 4px;
-      background-color: white;
+      background-color: rgb(8, 0, 0);
       margin: 5px 0;
       border-radius: 2px;
     }
 
-    .menu {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 10px;
-      padding: 15px;
-      display: none;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      min-width: 200px;
-    }
+  .menu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 15px;
+  display: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+  z-index: 9999; /* ✅ Stronger priority */
+}
+
 
     .menu a {
       display: block;
@@ -171,17 +202,118 @@
     <a href="contact.html">📞 Contact</a>
   </div>
 
-  <div class="main-content">
-    <h1>🎓 SGPA Calculator</h1>
-    <div class="button-container">
-      <a href="first-year.html">📘 First Year</a>
-      <a href="second-year.html">📗 Second Year</a>
-      <a href="third-year.html">📕 Third Year</a>
+  <!-- Page Heading -->
+  <h1>📘 2nd Year Syllabus PDFs</h1>
+
+  <!-- Courses Grid -->
+  <div class="container">
+
+    <!-- CIVIL -->
+    <div class="card">
+      <div class="branch">🏗️ CIVIL</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('2nd-year-civil-sem-1[1].pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-civil-sem-2[1].pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE -->
+    <div class="card">
+      <div class="branch">💻 CSE</div>
+      <div class="btn-container">
+         <button class="btn" onclick="openPDF('2nd-year-cse-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-cse-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE-AI -->
+    <div class="card">
+      <div class="branch">🤖 CSE-AI</div>
+      <div class="btn-container">
+         <button class="btn" onclick="openPDF('1st-year-cseai-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('1st-year-cseai-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE-AI&ML -->
+    <div class="card">
+      <div class="branch">🧠 CSE-AI&ML</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('2nd-year-cseaiml-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-cseaiml-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE-CYBER -->
+    <div class="card">
+      <div class="branch">🔐 CSE-CYBER</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('2nd-year-csecyber-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-csecyber-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- CSE-DATA -->
+    <div class="card">
+      <div class="branch">📊 CSE-DATA</div>
+      <div class="btn-container">
+       <button class="btn" onclick="openPDF('2nd-year-csedata-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-csedata-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- ECE -->
+    <div class="card">
+      <div class="branch">📡 ECE</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('2nd-year-ece-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-ece-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- EEE -->
+    <div class="card">
+      <div class="branch">⚡ EEE</div>
+      <div class="btn-container">
+      <button class="btn" onclick="openPDF('2nd-year-eee-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-eee-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- IoT -->
+    <div class="card">
+      <div class="branch">🌐 IoT</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('2nd-year-iot-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-iot-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- ME -->
+    <div class="card">
+      <div class="branch">🔧 ME</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('2nd-year-me-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-me-sem-2.pdf')">Sem 2</button>
+      </div>
+    </div>
+
+    <!-- IT -->
+    <div class="card">
+      <div class="branch">🖥️ IT</div>
+      <div class="btn-container">
+        <button class="btn" onclick="openPDF('2nd-year-it-sem-1.pdf')">Sem 1</button>
+        <button class="btn" onclick="openPDF('2nd-year-it-sem-2.pdf')">Sem 2</button>
+      </div>
     </div>
   </div>
 
+  <!-- JS PDF Function -->
   <script>
-    function toggleMenu() {
+    function openPDF(path) {
+      window.open(path, "_blank");
+    }
+     function toggleMenu() {
       document.getElementById("menu").classList.toggle("show");
     }
 
